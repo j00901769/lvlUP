@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/signup_styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home_styles.css') }}">
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lvlUP Tutoring</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+</head>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="this.parentNode.parentNode.removeChild(this.parentNode);">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+<body>
+<div class = "background">
+    <img src="{{ url_for('static', filename='images/bg7.jpg') }}">
+    </div>
+
+    <header>
+        <a href="/"><img src="{{ url_for('static', filename='images/lvlUP_logo1_nbg.png') }}" class="logo"></a>
+        <nav>
+            <ul>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="#services">Our Services</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="/login">LOG IN</a></li>
+                <li><a href="/signup">SIGN UP</a></li>
+            </ul>
+        </nav>
+
+    </header>
+        <title>Registration Form</title>
+
+    <h1>Registration Form</h1>
+
+    <form method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter Name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter Email" required>
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" placeholder="Enter Username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter Password" required>
+
+        <label for="confirm_password">Confirm Password:</label>
+        <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required>
+
+        <label for="user_type"> Select your role</label>
+        Student  <input type="checkbox" id="user_type" name="user_type" value="student">
+        Tutor    <input type="checkbox" id="user_type" name="user_type" value="tutor"><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+    <a href="/login" class="login-link">Already have an account? Login here.</a>
+    <main>
+
+
+
+
+
+
+
+    </main>
+    <footer>
+        <p></p>
+    </footer>
+
+</body>
+</html>

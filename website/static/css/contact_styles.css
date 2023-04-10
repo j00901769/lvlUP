@@ -1,0 +1,205 @@
+body {
+    font-family: "Ubuntu", sans-serif;
+    margin: auto;
+    padding: auto;
+
+
+}
+
+header {
+    justify-content: space-between;
+    background: rgba(0,0,0,.125);
+    padding: 0px 7%;
+    position: absolute;
+    top: 0; left:0; right: 0;
+    align-items: center;
+    box-shadow: 0 5px 10px rgba(0,0,0,.125);
+    display: flex;
+    flex-grow: 1;
+
+}
+
+nav{
+
+    display: inline-block;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav ul{
+    width: auto;
+    position: absolute;
+    top: 0px;
+    left: auto;
+    right: 20px;
+    margin: calc(100% +26px);
+    text-align: right;
+
+}
+
+nav ul li{
+    height: 50px;
+    list-style: none;
+    margin-left: 40px;
+    margin-right: 0px;
+    margin-top: 4px;
+    display: inline-block;
+    position: relative;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+nav ul li a:hover{
+    color:rgb(248,213,72) ;     /*orange = #f08025*/
+}
+
+nav ul li ul li {
+    width: 100%;
+    text-align: left;
+    position: relative;
+    left: 7px;
+    top: 50px;
+}
+nav ul li ul {
+    width: 100%;
+    text-align: left;
+    position: relative;
+    left: 7px;
+    top: 50px;
+}
+
+.logo{
+    display: inline-block;
+    margin-left: 20px;
+    width: 100px;
+    position: relative;
+}
+
+.heading{
+    width: 100%
+    margin: 0;
+    font-size: 35px;
+    font-weight: bold;
+    position: relative;
+    top: 135px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: black /*rgb(9,32,68)*/;
+    font-family: "Ubuntu", sans-serif;
+}
+
+
+.heading p{
+    width: 100%;
+    font-size: 25px;
+    position: relative;
+    bottom: 50px;
+}
+
+img{
+
+    width: 55%;  /*55*/
+    position: absolute;
+}
+
+
+
+.content{
+    margin-right: 30px;
+    float: right;
+    color: black/*rgb(9,32,68)*/;
+    font-size: 20px;
+    width: 43%;
+}
+
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -3;
+    background-attachment: local;
+
+
+}
+
+.background img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  z-index: -2
+}
+
+.overlay {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: -3;
+}
+
+.column {
+	flex: 33.33%;
+	height: auto;
+	padding: 10px;
+	margin: 5px;
+	background-color: rgba(255,255,255,.3);
+	text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+	}
+
+.container {
+    position: relative;
+    top: 95px;
+    display: flex;
+	}
+
+form{
+    display: flex;
+    flex-direction: column;
+    padding: 0vw 1.5vw;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 10px;
+}
+
+form input, form textarea{
+    border: 0;
+    margin: 10px, 0;
+    padding: 20px;
+    outline: none;
+    background: rgba(255,255,255,.5);
+    font-size: 16px;
+    border-radius: 10px;
+
+}
+
+form button{
+    padding: 15px;
+    background: rgb(239,135,51);
+    color: #fff;
+    font-size: 18px;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    width: 150px;
+    margin: 20px auto 0;
+    border-radius: 30px;
+
+}
+form button:hover{
+        background-color: rgb(248,213,72);
+}

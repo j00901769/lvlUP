@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/about_styles.css') }}">
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lvlUP Tutoring</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+
+    <div class = "background">
+    <img src="{{ url_for('static', filename='images/bg7.jpg') }}">
+    </div>
+
+   <!-- <div class="overlay"></div>-->
+
+</head>
+
+
+<body>
+
+    <header>
+        <a href="/"><img src="{{ url_for('static', filename='images/lvlUP_logo1_nbg.png') }}" class="logo"></a>
+        <nav>
+            <ul>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="#services">Our Services</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="/login">LOG IN</a></li>
+                <li><a href="/signup">SIGN UP</a></li>
+            </ul>
+        </nav>
+
+    </header>
+    <main>
+        <div class="heading">
+            <h1>About Us</h1>
+            <p>lvlUP Tutoring is a tutoring platform built by DKCS INC. just for JSU students</p>
+        </div>
+
+        <div class="container">
+            <div class="content">
+                <h2>Our Story</h2>
+                <p>     Welcome to our peer tutoring website! We are a group of students from Jackson State
+                    University who are passionate about helping our fellow students succeed academically.
+                    As part of our senior project, we have created this platform to connect students who
+                    need academic support with other students who are knowledgeable in those subjects.
+                    Our team consists of dedicated individuals who are committed to making a positive impact
+                    on our campus community. We believe that students can learn best from their peers, and
+                    we have designed our tutoring service to facilitate this peer-to-peer learning.
+                    Our peer tutors are students who have excelled in their coursework and are passionate
+                    about sharing their knowledge with others. We are proud to be part of the Jackson State University community and are committed to
+                    giving back. Through this project, we hope to promote academic excellence and create a culture of
+                    peer support on our campus. Thank you for visiting our website, and we encourage you to take
+                    advantage of our peer tutoring service.
+                </p>
+                <button onclick = "window.location.href='/contact';" class="contact-us-btn">Contact Us</button>
+            </div>
+        </div>
+
+        <img src="{{ url_for('static', filename='images/jsu.png') }}">
+
+
+
+
+
+    </main>
+    <footer>
+        <p></p>
+    </footer>
+
+</body>
+</html>

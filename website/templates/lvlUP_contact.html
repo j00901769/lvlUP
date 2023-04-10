@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contact_styles.css') }}">
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lvlUP Tutoring</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+
+    <div class = "background">
+    <img src="{{ url_for('static', filename='images/bg7.jpg') }}">
+    </div>
+
+   <!-- <div class="overlay"></div>-->
+
+</head>
+
+
+<body>
+
+    <header>
+        <a href="/"><img src="{{ url_for('static', filename='images/lvlUP_logo1_nbg.png') }}" class="logo"></a>
+        <nav>
+            <ul>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="#services">Our Services</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="/login">LOG IN</a></li>
+                <li><a href="/signup">SIGN UP</a></li>
+            </ul>
+        </nav>
+
+    </header>
+    <main>
+        <div class="heading">
+            <h1>Contact Us</h1>
+            <p>Get in touch with the students responsible for lvlUP!</p>
+        </div>
+
+	<div class="container">
+	   <div class="column">
+           <img src="{{ url_for('static', filename='images/hq.png') }}" class="logo">
+	     <h2> lvlUP HQ </h2>
+		 <p> HQ: Jackson State University Engineering Building</p>
+           <p> Address: 1400 John R. Lynch St, Jackson, MS 39217</p>
+           <p> Phone #: (601) 979-2121</p>
+           <p> Email: support@lvlUP.com</p>
+
+
+
+
+	   </div>
+	   <div class="column">
+           <img src="{{ url_for('static', filename='images/email.png') }}" class="logo">
+	     <h2> Send us a Message </h2>
+		 <form onsubmit="sendEmail(); reset(); return false;" >
+             <input type = "text" id = "name" placeholder = "Your Name" required>
+             <input type = "email" id = "email" placeholder = "Your Email" required>
+             <input type = "text" id = "phone" placeholder = "Phone Number" required>
+             <textarea id = "message" rows = "4" placeholder="Your message" required></textarea>
+             <button type = "submit">Send</button>
+         </form>
+	   </div>
+	   <div class="column">
+           <img src="{{ url_for('static', filename='images/faq.png') }}" class="logo">
+	     <h2> Frequently Asked Questions </h2>
+           <p> <b>What subjects do you offer tutoring for?</b></b></p>
+<p> We offer tutoring for a variety of subjects, including math, science, English, history, and more. Our tutors are highly qualified and knowledgeable in their respective fields.
+</p>
+           <b>How much does tutoring cost?</b></p>
+<p> Tutoring is free for all JSU students. We believe that every student should have access to academic support regardless of their financial situation.
+</p><p>
+<b>Can I choose my tutor?</b></p>
+<p> Yes, you can choose your tutor based on availability and subject expertise. We encourage you to read tutor bios and reviews to find the best match for your learning style and academic needs.</p>
+	   </div>
+	</div>
+
+
+
+
+
+
+    </main>
+    <footer>
+        <p></p>
+    </footer>
+    <script src = "https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        function sendEmail(){
+            Email.send({
+                Host : "smtp.gmail.com",
+                Username : "tutoringlvlup@gmail.com",
+                Password : "securepw2023",
+                To : "tutoringlvlup@gmail.com",
+                From : document.getElementById("email").value,
+                Subject : "New Inquiry",
+                Body : "Name: " + document.getElementById("name").value
+                + "<br> Email: " + document.getElementById("email").value
+                + "<br> Phone #: " + document.getElementById("phone").value
+                + "<br> Message: " + document.getElementById("message").value
+            }).then(
+             message => alert("Message Sent Successfully")
+            );
+        }
+    </script>
+</body>
+</html>
