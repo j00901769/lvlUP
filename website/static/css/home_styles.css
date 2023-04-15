@@ -220,6 +220,18 @@ nav ul li ul {
     color: black
 }
 
+.results-container{
+    position: relative;
+    line-height: 200%;
+    top: 150px;
+    max-width: 500px;
+    margin: auto;
+    padding: 10px 45px 10px 20px;
+    background-color: rgba(255,255,255, 0.3);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    text-align: center;
+}
 
 #hero
 

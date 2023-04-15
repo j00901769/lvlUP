@@ -33,7 +33,7 @@
         </div>
 
             <h1>Are you ready to lvlUP?</h1>
-            <h2>
+            <h2 class = "search-h2">
                 Free one-on-one tutoring by JSU students, online or in-person. <br>Whether
                 you prefer to meet online or in-person, our student tutors are<br> here to help you succeed.
                 Take your future into your own hands. It's <br> time for you to lvlUP!
@@ -46,14 +46,20 @@
 
         <div class = "search_container">
 
-            <form method="GET" class="search_bar">
+            <form method="POST" class="search_bar">
 
                 <input type="text" id="subject" name="subject" placeholder="Search for subjects like 'Chemistry II' or 'Spanish'">
 
                 <button type="submit"><img src="{{url_for('static', filename='images/search1.png')}}" class="search_icon" value="search"></button>
             </form>
         </div>
-
+        <div class="results-container" {% if tutors %}style="display:block;"{% else %}style="display:none;"{% endif %}>
+            <ul>
+                {% for tutor in tutors %}
+                <li>{{ tutor.name }} - {{ tutor.email }}</li>
+                {% endfor %}
+            </ul>
+        </div>
     </main>
     <footer>
         <p></p>

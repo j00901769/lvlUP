@@ -1,15 +1,314 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Welcome to Your Account</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contact_styles.css') }}">
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lvlUP Tutoring</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/locale-all.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Include jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <div class = "background">
+    <img src="{{ url_for('static', filename='images/bg7.jpg') }}">
+    </div>
+
+   <!-- <div class="overlay"></div>-->
 
 </head>
+
+
 <body>
-    <h1>Welcome to Your Account, {{ name }}</h1>
-    <p>You are now signed in!</p>
-    <p>{{username}}</p>
-    <p>{{email}}</p>
-    <p>{{user_type}}</p>
-    <a href="/logout" class="logout-link">Logout</a>
+
+    <header>
+        <a href="/"><img src="{{ url_for('static', filename='images/lvlUP_logo1_nbg.png') }}" class="logo"></a>
+        <nav>
+            <ul>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="#services">Our Services</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="/login">LOG IN</a></li>
+                <li><a href="/signup">SIGN UP</a></li>
+            </ul>
+        </nav>
+
+    </header>
+    <main>
+        <div class="heading">
+            <h1>{{name}}'s Account</h1>
+        </div>
+
+	<div class="container">
+	   <div class="column">
+           <h1>Update Account Info</h1>
+            <form method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter Name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter Email" required>
+
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Enter Username" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter Password" required>
+
+                <label for="confirm_password">Confirm Password:</label>
+                <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required>
+
+                <button type="submit">Update</button>
+    </form>
+
+
+
+	   </div>
+	   <div class="column">
+           <h1>Set Availability</h1>
+            <div id="calendar-container">
+                <style>
+        /* CSS for calendar UI */
+        .calendar-container {
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        .calendar {
+            width: 300px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #f9f9f9;
+            font-family: Ubuntu, sans-serif;
+            max-width: 300px;
+            margin: 0 auto;
+            text-align: center;
+
+        }
+
+        .calendar .header {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .calendar .days {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .calendar .day {
+            width: calc(100% / 7);
+            text-align: center;
+            padding: 5px;
+            font-size: 14px;
+        }
+
+        .calendar .day.active {
+            background-color: #337ab7;
+            color: #fff;
+        }
+
+        .calendar .day:hover {
+            cursor: pointer;
+            background-color: #337ab7;
+            color: #fff;
+        }
+
+        .calendar .selected {
+            background-color: #5cb85c;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="calendar">
+        <div class="header">
+            <i class="fas fa-chevron-left"></i>
+            <span id="month-year"></span>
+            <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="days"></div>
+    </div>
+
+    <script>
+        // JavaScript for calendar UI
+        // Get current date
+        const currentDate = new Date();
+        let currentMonth = currentDate.getMonth();
+        let currentYear = currentDate.getFullYear();
+
+        // Set initial month and year in UI
+        document.getElementById('month-year').innerText = getMonthName(currentMonth) + ' ' + currentYear;
+
+        // Render calendar days
+        renderDays(currentMonth, currentYear);
+
+        // Function to render calendar days
+        function renderDays(month, year) {
+            const daysContainer = document.querySelector('.days');
+            daysContainer.innerHTML = '';
+
+            // Get the first day of the month
+            const firstDay = new Date(year, month, 1);
+            // Get the number of days in the month
+            const numDays = new Date(year, month + 1, 0).getDate();
+
+            // Create empty cells for days before the first day of the month
+            for (let i = 0; i < firstDay.getDay(); i++) {
+                const emptyCell = document.createElement('div');
+                emptyCell.classList.add('day');
+                daysContainer.appendChild(emptyCell);
+            }
+
+            // Create cells for each day of the month
+            for (let i = 1; i <= numDays; i++) {
+                const dayCell = document.createElement('div');
+                dayCell.classList.add('day');
+                dayCell.innerText = i;
+                daysContainer.appendChild(dayCell);
+
+                // Add click event listener to each day cell
+                dayCell.addEventListener('click', function() {
+                    // Remove 'active' class from previously selected day
+                    const activeDay = document.querySelector('.day.active');
+                    if (activeDay) {
+                        activeDay.classList.remove('active');
+                    }
+                    // Add 'active' class to selected day
+                    dayCell.classList.add('active');
+                });
+            }
+        }
+
+        // Function to get month name
+        function getMonthName(month) {    const monthNames = [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+            'July',
+            'August',
+            'September',
+            'October',
+            'November',
+            'December'
+        ];
+        return monthNames[month];
+    }
+
+    // Function to update calendar UI based on selected month and year
+    function updateCalendar() {
+        const monthYear = document.getElementById('month-year').innerText.split(' ');
+        const month = monthNames.indexOf(monthYear[0]);
+        const year = parseInt(monthYear[1]);
+
+        renderDays(month, year);
+    }
+
+    // Add click event listener to previous month arrow
+    document.querySelector('.fa-chevron-left').addEventListener('click', function() {
+        currentMonth--;
+        if (currentMonth < 0) {
+            currentMonth = 11;
+            currentYear--;
+        }
+        document.getElementById('month-year').innerText = getMonthName(currentMonth) + ' ' + currentYear;
+        updateCalendar();
+    });
+
+    // Add click event listener to next month arrow
+    document.querySelector('.fa-chevron-right').addEventListener('click', function() {
+        currentMonth++;
+        if (currentMonth > 11) {
+            currentMonth = 0;
+            currentYear++;
+        }
+        document.getElementById('month-year').innerText = getMonthName(currentMonth) + ' ' + currentYear;
+        updateCalendar();
+    });
+</script>
+            </div>
+                <form id="appointment-form">
+                    <select id="appointment-duration" name="duration" required>
+                    <option value="">Select Duration</option>
+                    <option value="30">30 minutes</option>
+                    <option value="45">45 minutes</option>
+                    <option value="60">60 minutes</option>
+                        <option value="90">1 hr 30 min</option>
+                        <option value="120">2 hr</option>
+                    </select>
+                    <select id="appointment-subject" name="subject" required>
+                    <option value="">Select Subject</option>
+                    <option value="">30 minutes</option>
+                    <option value="">45 minutes</option>
+                    <option value="">60 minutes</option>
+                        <option value="90">1 hr 30 min</option>
+                        <option value="120">2 hr</option>
+                    </select>
+                    <button type="submit">Submit</button>
+                </form>
+	   </div>
+
+
+          <script>
+    $(document).ready(function() {
+        // Initialize FullCalendar
+        $('#calendar-container').fullCalendar({
+            // FullCalendar options here
+            // ...
+            // Handle event click
+            eventClick: function(calEvent, jsEvent, view) {
+                // Set appointment details in the form
+                $('#appointment-id').val(calEvent.id);
+                $('#appointment-date').val(calEvent.start.format('YYYY-MM-DD'));
+                $('#appointment-duration').val(calEvent.duration);
+                $('#appointment-subject').val(calEvent.subject);
+            }
+        });
+
+        // Handle form submission
+        $('#appointment-form').on('submit', function(event) {
+            event.preventDefault();
+            // Submit form data to the database via AJAX
+            var formData = $(this).serialize();
+            $.ajax({
+                url: '/submit_appointment', // Replace with your server-side script to handle form submission
+                type: 'POST',
+                data: formData,
+                success: function(response) {
+                    // Handle success response
+                    console.log(response);
+                },
+                error: function(xhr, status, error) {
+                    // Handle error response
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+    });
+    </script>
+	   <div class="column">
+           <h1>Upcoming Sessions</h1>
+
+       </div>
+	</div>
+
+
+
+
+
+
+    </main>
+    <footer>
+    </footer>
+
 </body>
 </html>
