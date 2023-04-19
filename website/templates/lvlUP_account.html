@@ -45,6 +45,21 @@
             <h1>{{name}}'s Account</h1>
         </div>
 
+	    <?php
+		// Start the session
+		session_start();
+		
+		// Check if the user is logged in
+		if(isset($_SESSION['user_id'])) {
+			$user_id = $_SESSION['user_id'];
+			echo "<p>Your user ID is: $user_id</p>";
+			echo "<p><a href='lvlUP_logout.php'>Log out</a></p>";
+		} else {
+			echo "<p>You are not logged in.</p>";
+			echo "<p><a href='lvlUP_login.html'>Log in</a></p>";
+		}
+	?>
+	    
 	<div class="container">
 	   <div class="column">
            <h1>Update Account Info</h1>
