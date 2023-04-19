@@ -46,7 +46,7 @@
 
     <h1>Registration Form</h1>
 
-    <form method="POST">
+    <form method="POST" action="lvlUP_register.php">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" placeholder="Enter Name" required>
 
@@ -65,6 +65,9 @@
         <label for="user_type"> Select your role</label>
         Student  <input type="checkbox" id="user_type" name="user_type" value="student">
         Tutor    <input type="checkbox" id="user_type" name="user_type" value="tutor"><br><br>
+        
+        <label for="user_id">User ID:</label>
+        <input type="text" name="user_id" required><br>
 
         <input type="submit" value="Submit">
     </form>
